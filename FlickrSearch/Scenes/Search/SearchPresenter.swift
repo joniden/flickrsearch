@@ -30,12 +30,18 @@ class SearchPresenter {
     }
     
     apiManager.search(string) { result in
-      switch result {
-      case .success(let photos):
-        
-      case .failure(let error):
-        
-      }
+      DispatchQueue.main.async {
+        switch result {
+        case .success(let response):
+          if let photo = response.photos.photo {
+            self.ui?.images = photo.compactMap { ResultImage($0) }
+          } else {
+            self.ui?.showAlert("no images")
+          }
+        case .failure(let error):
+          self.ui?.showAlert(error.localizedDescription)
+        }
+      }      
     }
   }
 }

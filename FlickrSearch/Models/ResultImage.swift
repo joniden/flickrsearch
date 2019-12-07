@@ -8,7 +8,12 @@
 
 import Foundation
 
-struct ResultImage {
-  var imageURL: String?
+struct ResultImage: Codable {
+  var imageUrl: String?
   var imageId: String?
+  
+  init(_ photo: PhotosAPIModel.Photo) {
+    imageUrl = FlickrSettings.Route.details(photo).url
+    imageId = photo.id
+  }
 }

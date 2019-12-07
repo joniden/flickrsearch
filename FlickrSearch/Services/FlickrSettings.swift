@@ -22,7 +22,7 @@ struct FlickrSettings {
     var url: String {
       switch self {
       case .search(let searchString):
-        return "\(baseUrl)?method=flickr.photos.search&api_key=\(apiKey)&format=json&text=\(searchString)"
+        return "\(baseUrl)?method=flickr.photos.search&api_key=\(apiKey)&format=json&nojsoncallback=1&per_page=9s&text=\(searchString)"
       case .details(let photo):
         // This was a neat little method to get a url with only photo information
         return "https://farm\(photo.farm).staticflickr.com/\(photo.server)/\(photo.id)_\(photo.secret).jpg"

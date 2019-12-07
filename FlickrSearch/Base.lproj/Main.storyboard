@@ -19,14 +19,14 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5X5-q8-TaR">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8bI-QN-Lp6">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8bI-QN-Lp6">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCell" id="L4P-RI-QSo" customClass="ResultImageCollectionViewCell" customModule="FlickrSearch" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="L4P-RI-QSo" customClass="ResultImageCollectionViewCell" customModule="FlickrSearch" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xUS-hN-eZd">
@@ -40,19 +40,30 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Bt6-Hz-16n"/>
                                 </connections>
                             </collectionView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BKx-92-WpK" userLabel="PaginationView" customClass="PaginationView" customModule="FlickrSearch" customModuleProvider="target">
+                                <rect key="frame" x="87" y="772" width="240" height="50"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="2BE-rx-5i1"/>
+                                    <constraint firstAttribute="height" constant="50" id="qFn-cg-J8Z"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="5X5-q8-TaR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1PS-MA-Qat"/>
-                            <constraint firstItem="5X5-q8-TaR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="EOp-v7-PHp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5X5-q8-TaR" secondAttribute="bottom" id="V06-85-ZjR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5X5-q8-TaR" secondAttribute="trailing" id="g4e-eF-eHb"/>
+                            <constraint firstItem="5X5-q8-TaR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hDs-0j-TRH"/>
+                            <constraint firstItem="BKx-92-WpK" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="sa0-Lw-fVp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BKx-92-WpK" secondAttribute="bottom" constant="40" id="tBu-Ve-7Pg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="FlickrSearch" largeTitleDisplayMode="always" id="BX9-Ee-fBr"/>
                     <connections>
                         <outlet property="collectionView" destination="5X5-q8-TaR" id="kJ7-Uf-udn"/>
+                        <outlet property="paginationView" destination="BKx-92-WpK" id="Dib-1w-0io"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
