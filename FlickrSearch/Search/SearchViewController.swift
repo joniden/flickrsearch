@@ -13,6 +13,7 @@ class SearchViewController: UIViewController {
   // MARK: - Vars
   
   var images: [ResultImage] = []
+  var presenter: SearchPresenter?
   
   // MARK: - IBOutlets
   
@@ -22,6 +23,7 @@ class SearchViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.presenter = SearchPresenter(self)
     setupSearchController()
   }
   
