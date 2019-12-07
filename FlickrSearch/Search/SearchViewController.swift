@@ -10,15 +10,22 @@ import UIKit
 
 class SearchViewController: UIViewController {
   
+  // MARK: - Vars
+  
+  var images: [ResultImage] = []
+  
   // MARK: - IBOutlets
   
   @IBOutlet weak var collectionView: UICollectionView!
   
+  // MARK: - Lifecycle
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     setupSearchController()
-    // Do any additional setup after loading the view.
   }
+  
+  // MARK: - SearchController
 
   func setupSearchController() {
     let searchController = UISearchController(searchResultsController: nil)
@@ -32,6 +39,8 @@ class SearchViewController: UIViewController {
 
 }
 
+// MARK: - Extensions
+
 extension SearchViewController: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
     
@@ -43,6 +52,21 @@ extension SearchViewController: UICollectionViewDelegate {
 }
 
 extension SearchViewController: UICollectionViewDataSource {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return images.count
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    
+    let identifier = ResultImageCollectionViewCell.identifier
+    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? ResultImageCollectionViewCell else {
+      return UICollectionViewCell()
+    }
+    
+    cell.setup(images[indexPath.row])
+    return cell
+    
+  }
   
 }
 
