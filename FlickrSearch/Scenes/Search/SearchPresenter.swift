@@ -35,7 +35,11 @@ class SearchPresenter {
         case .success(let response):            
           let viewModel = SearchResultViewModel(searchString: string, model: response.photos)
           
-          self.ui?.updateView(viewModel)
+          if viewModel.photos.count == 0 {
+            self.ui?.showAlert("No results for \"\(string)\"")
+          } else {
+            self.ui?.updateView(viewModel)
+          }          
         case .failure(let error):
           self.ui?.showAlert(error.localizedDescription)
         }

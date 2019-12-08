@@ -56,8 +56,10 @@ class ResultImageCollectionViewCell: UICollectionViewCell {
     } else {
       DispatchQueue.global(qos: .background).async {
         
-        guard let data = try? Data(contentsOf: url), let image = UIImage(data: data) else {
-          self.activityIndicatorView.stopAnimating()
+        guard let data = try? Data(contentsOf: url), let image = UIImage(data: data) else {          
+          DispatchQueue.main.async {
+            self.activityIndicatorView.stopAnimating()
+          }
           return
         }
        

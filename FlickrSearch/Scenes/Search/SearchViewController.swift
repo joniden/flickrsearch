@@ -103,12 +103,7 @@ class SearchViewController: BaseViewController {
       presenter?.search(string: searchString, page: page)
     }
   }
-  
-  // MARK: - Alert
-  
-  func showAlert(_ string: String) {
-    print(string)
-  }
+
 }
 
 // MARK: - Extensions

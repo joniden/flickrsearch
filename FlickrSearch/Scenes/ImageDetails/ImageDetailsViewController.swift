@@ -54,10 +54,4 @@ class ImageDetailsViewController: BaseViewController {
     modalNavigationItem.title = viewModel.title
     infoLabel.attributedText = viewModel.attributedText
   }
-  
-  // MARK: - Alert
-  
-  func showAlert(_ string: String) {
-    print(string)
-  }
 }

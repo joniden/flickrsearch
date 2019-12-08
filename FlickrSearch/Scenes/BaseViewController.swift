@@ -36,4 +36,12 @@ class BaseViewController: UIViewController {
     activityIndicatorView.stopAnimating()
   }
   
+  func showAlert(_ message: String) {
+    let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+    let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+    alertController.addAction(action)
+    hideActivityIndicator()
+    present(alertController, animated: true, completion: nil)
+  }
+  
 }
