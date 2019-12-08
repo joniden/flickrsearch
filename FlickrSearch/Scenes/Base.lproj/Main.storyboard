@@ -82,7 +82,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fh7-0D-Scf">
                                 <rect key="frame" x="-4" y="56" width="422" height="752"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XFg-ky-BJR">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XFg-ky-BJR">
                                         <rect key="frame" x="16" y="8" width="390" height="250"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="250" id="IXJ-vB-B55"/>
@@ -162,11 +162,77 @@
                         <outlet property="infoLabel" destination="ccE-p3-5dJ" id="GGV-k7-a1O"/>
                         <outlet property="infoWrapperView" destination="i72-aE-74Y" id="kla-UF-CC2"/>
                         <outlet property="modalNavigationItem" destination="zkb-8p-j71" id="9WC-zJ-cdz"/>
+                        <segue destination="Uf3-ep-sYA" kind="presentation" identifier="showZoom" modalPresentationStyle="fullScreen" id="4uj-nc-xfx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PHe-Of-I5T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1939" y="90"/>
+        </scene>
+        <!--Image Zoom View Controller-->
+        <scene sceneID="rUL-HQ-O6t">
+            <objects>
+                <viewController id="Uf3-ep-sYA" customClass="ImageZoomViewController" customModule="FlickrSearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FMe-2U-lAu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HWw-Uy-i7U">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dQi-Uj-VpL">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="128" id="ahB-OJ-Lch"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="dQi-Uj-VpL" secondAttribute="bottom" id="0fw-cw-aLa"/>
+                                    <constraint firstItem="dQi-Uj-VpL" firstAttribute="width" secondItem="HWw-Uy-i7U" secondAttribute="width" id="Omi-nq-18L"/>
+                                    <constraint firstItem="dQi-Uj-VpL" firstAttribute="leading" secondItem="zlp-YK-B4n" secondAttribute="leading" id="Td0-0B-BCR"/>
+                                    <constraint firstItem="dQi-Uj-VpL" firstAttribute="top" secondItem="HWw-Uy-i7U" secondAttribute="top" id="YQC-2k-5sU"/>
+                                    <constraint firstAttribute="trailing" secondItem="dQi-Uj-VpL" secondAttribute="trailing" id="qV4-3a-Vuv"/>
+                                    <constraint firstItem="iMm-ct-LKf" firstAttribute="bottom" secondItem="dQi-Uj-VpL" secondAttribute="bottom" id="wrI-iH-s1G"/>
+                                    <constraint firstItem="dQi-Uj-VpL" firstAttribute="top" secondItem="zlp-YK-B4n" secondAttribute="top" id="xeY-PP-2Ao"/>
+                                    <constraint firstItem="dQi-Uj-VpL" firstAttribute="centerX" secondItem="HWw-Uy-i7U" secondAttribute="centerX" id="yqG-4m-4xF"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="zlp-YK-B4n"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="iMm-ct-LKf"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Uf3-ep-sYA" id="PTj-78-WNP"/>
+                                </connections>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NAF-bG-XHR">
+                                <rect key="frame" x="0.0" y="44" width="30" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="X"/>
+                                <connections>
+                                    <action selector="didPressClose:" destination="Uf3-ep-sYA" eventType="touchUpInside" id="xTz-5d-9z0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="NAF-bG-XHR" firstAttribute="leading" secondItem="zfZ-Po-tCK" secondAttribute="leading" id="2T2-Gr-Viv"/>
+                            <constraint firstItem="zfZ-Po-tCK" firstAttribute="trailing" secondItem="HWw-Uy-i7U" secondAttribute="trailing" id="8pH-61-jjE"/>
+                            <constraint firstItem="NAF-bG-XHR" firstAttribute="top" secondItem="zfZ-Po-tCK" secondAttribute="top" id="JC3-5v-b9F"/>
+                            <constraint firstItem="HWw-Uy-i7U" firstAttribute="width" secondItem="zfZ-Po-tCK" secondAttribute="width" id="KWI-S4-ex4"/>
+                            <constraint firstItem="zfZ-Po-tCK" firstAttribute="bottom" secondItem="HWw-Uy-i7U" secondAttribute="bottom" id="RXP-Yr-88s"/>
+                            <constraint firstItem="HWw-Uy-i7U" firstAttribute="height" secondItem="zfZ-Po-tCK" secondAttribute="height" id="f83-Kc-g3S"/>
+                            <constraint firstItem="HWw-Uy-i7U" firstAttribute="top" secondItem="zfZ-Po-tCK" secondAttribute="top" id="iiN-sg-GFj"/>
+                            <constraint firstItem="HWw-Uy-i7U" firstAttribute="leading" secondItem="zfZ-Po-tCK" secondAttribute="leading" id="mEt-qC-PIY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zfZ-Po-tCK"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="dQi-Uj-VpL" id="29x-cO-sZc"/>
+                        <outlet property="scrollView" destination="HWw-Uy-i7U" id="TFk-rQ-tSU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zkF-He-itm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2807.2463768115945" y="96.428571428571431"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qld-dn-lXR">

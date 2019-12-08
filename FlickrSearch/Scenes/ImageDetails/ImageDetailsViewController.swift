@@ -13,6 +13,9 @@ class ImageDetailsViewController: BaseViewController {
   // MARK: - Vars
   var resultImage: ResultImage?
   private var presenter: ImageDetailsPresenter?
+  private var gestureRecognizer: UIGestureRecognizer {
+    return UITapGestureRecognizer(target: self, action: #selector(didTapImage))
+  }
   
   // MARK: - IBOutlets
   
@@ -38,11 +41,23 @@ class ImageDetailsViewController: BaseViewController {
       presenter?.getDetails(id)
     }
     
+    imageView.addGestureRecognizer(gestureRecognizer)
+    
     // The image comes from previous screen, so we just load id
     if let data = resultImage?.data {
       imageView.image = UIImage(data: data)
     }
   }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard let vc = segue.destination as? ImageZoomViewController else {
+      return
+    }
+    
+    vc.image = imageView.image
+  }
+  
+  // MARK: - Functions
   
   // This one is loaded from SearchViewController
   func setResultImage(_ resultImage: ResultImage?) {
@@ -53,5 +68,9 @@ class ImageDetailsViewController: BaseViewController {
     hideActivityIndicator()
     modalNavigationItem.title = viewModel.title
     infoLabel.attributedText = viewModel.attributedText
+  }
+  
+  @objc func didTapImage() {
+    performSegue(withIdentifier: "showZoom", sender: self)
   }
 }
