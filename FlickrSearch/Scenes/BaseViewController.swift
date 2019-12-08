@@ -24,8 +24,6 @@ class BaseViewController: UIViewController {
     activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
     activityIndicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     activityIndicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-    activityIndicatorView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-    activityIndicatorView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
     
     activityIndicatorView.hidesWhenStopped = true
   }

@@ -96,6 +96,10 @@ class SearchViewController: BaseViewController {
   private func paginate(_ page: Int) {
     if let searchString = self.searchString {
       showActivityIndicator()
+      
+      // Clear the images, otherwise they will be visible for a while
+      images.removeAll()
+      
       presenter?.search(string: searchString, page: page)
     }
   }

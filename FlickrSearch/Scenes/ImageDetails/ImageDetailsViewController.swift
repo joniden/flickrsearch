@@ -33,13 +33,13 @@ class ImageDetailsViewController: BaseViewController {
     super.viewDidLoad()
     presenter = ImageDetailsPresenter(self)
     
-    if let id = resultImage?.imageId {
+    if let id = resultImage?.id {
       showActivityIndicator()
       presenter?.getDetails(id)
     }
     
     // The image comes from previous screen, so we just load id
-    if let data = resultImage?.imageData {
+    if let data = resultImage?.data {
       imageView.image = UIImage(data: data)
     }
   }

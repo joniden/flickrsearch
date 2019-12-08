@@ -9,13 +9,13 @@
 import Foundation
 
 struct ResultImage: Codable {
-  var imageUrl: String?
-  var imageData: Data?
-  var imageId: String?
+  var url: String?
+  var data: Data?
+  var id: String?
   
   init(_ photo: PhotoAPIModel) {
-    imageUrl = FlickrSettings.Route.image(photo).url
-    imageData = nil
-    imageId = photo.id
+    url = FlickrSettings.Route.image(photo).url
+    data = nil
+    id = photo.id
   }
 }

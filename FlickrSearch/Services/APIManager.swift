@@ -22,6 +22,20 @@ class APIManager {
   
   static let shared = APIManager()
   
+  private let allowedDiskSize = 100 * 1024 * 1024
+  private lazy var cache: URLCache = {
+      return URLCache(memoryCapacity: 0, diskCapacity: allowedDiskSize, diskPath: "requestCache")
+  }()
+  
+  // To handle the cache, have a custom urlSession
+  private var urlSession: URLSession {
+    let configuration = URLSessionConfiguration.default
+    configuration.requestCachePolicy = .returnCacheDataElseLoad
+    configuration.timeoutIntervalForResource = 30
+    configuration.urlCache = cache
+    return URLSession(configuration: configuration)
+  }
+  
   // MARK: - Life cycle
   
   private init() { }
@@ -73,18 +87,19 @@ class APIManager {
       }
       
       let request = URLRequest(url: url)
-      let configuration = URLSessionConfiguration.default
-      configuration.timeoutIntervalForResource = 30
-      let session = URLSession(configuration: configuration)
       
-      let task = session.dataTask(with: request) { (data, response, error) in
-        if let error = error {
-          callback?(Result.failure(error))
-        } else if let data = data {
-          callback?(Result.success(data))
+      if let cachedData = self.cache.cachedResponse(for: request) {
+        callback?(.success(cachedData.data))
+      } else {
+        let task = self.urlSession.dataTask(with: request) { (data, response, error) in
+          if let error = error {
+            callback?(Result.failure(error))
+          } else if let data = data {
+            callback?(Result.success(data))
+          }
         }
+        task.resume()
       }
-      task.resume()
     }
   }
 }
