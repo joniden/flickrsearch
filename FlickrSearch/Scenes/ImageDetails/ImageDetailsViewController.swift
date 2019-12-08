@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ImageDetailsViewController: UIViewController {
+class ImageDetailsViewController: BaseViewController {
   
   // MARK: - Vars
   var resultImage: ResultImage?
@@ -34,6 +34,7 @@ class ImageDetailsViewController: UIViewController {
     presenter = ImageDetailsPresenter(self)
     
     if let id = resultImage?.imageId {
+      showActivityIndicator()
       presenter?.getDetails(id)
     }
     
@@ -49,6 +50,7 @@ class ImageDetailsViewController: UIViewController {
   }
   
   func updateInformation(_ viewModel: ImageDetailsViewModel) {
+    hideActivityIndicator()
     modalNavigationItem.title = viewModel.title
     infoLabel.attributedText = viewModel.attributedText
   }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: BaseViewController {
   
   // MARK: - Vars
   
@@ -59,8 +59,9 @@ class SearchViewController: UIViewController {
   }
   
   func updateView(_ viewModel: SearchResultViewModel) {
-    self.images = viewModel.photos
-    self.paginationView.setCurrentInfo(currentPage: viewModel.page, totalPages: viewModel.pages)
+    hideActivityIndicator()
+    images = viewModel.photos
+    paginationView.setCurrentInfo(currentPage: viewModel.page, totalPages: viewModel.pages)
   }
   
   // MARK: - SearchController
@@ -82,16 +83,20 @@ class SearchViewController: UIViewController {
   
   private func setupPagination() {
     paginationView.setCurrentInfo(currentPage: 0, totalPages: 0)
+    
     paginationView.didPressNext = { page in
-      if let searchString = self.searchString {
-        self.presenter?.search(string: searchString, page: page)
-      }      
+      self.paginate(page)
     }
     
     paginationView.didPressBack = { page in
-      if let searchString = self.searchString {
-        self.presenter?.search(string: searchString, page: page)
-      }
+      self.paginate(page)
+    }
+  }
+  
+  private func paginate(_ page: Int) {
+    if let searchString = self.searchString {
+      showActivityIndicator()
+      presenter?.search(string: searchString, page: page)
     }
   }
   
@@ -111,8 +116,8 @@ extension SearchViewController: UISearchBarDelegate {
   
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     if let text = searchBar.text {
-      self.searchString = text
-      presenter?.search(string: text, page: 1)
+      searchString = text
+      paginate(1)
     }
   }
 }
