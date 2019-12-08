@@ -19,9 +19,12 @@ class SearchViewController: UIViewController {
     }
   }
   
-  var presenter: SearchPresenter?
+  var selectedCell: ResultImageCollectionViewCell?
+  let animator = GrowAnimator()
   
   let searchController = UISearchController(searchResultsController: nil)
+  private let segueIdentifier = "showImageDetails"
+  private var presenter: SearchPresenter?
   
   // MARK: - IBOutlets
   
@@ -64,7 +67,6 @@ class SearchViewController: UIViewController {
   func showAlert(_ string: String) {
     print(string)
   }
-
 }
 
 // MARK: - Extensions
@@ -79,10 +81,20 @@ extension SearchViewController: UISearchBarDelegate {
       presenter?.search(text)
     }
   }
-}
-
-extension SearchViewController: UICollectionViewDelegate {
   
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard
+      segue.identifier == segueIdentifier,
+      let vc = segue.destination as? ImageDetailsViewController,
+      let cell = selectedCell
+    else {
+       return
+    }
+    
+    vc.transitioningDelegate = self
+    vc.modalPresentationStyle = .custom    
+    vc.setImage(cell.imageView?.image)
+  }
 }
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
@@ -110,6 +122,7 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension SearchViewController: UICollectionViewDataSource {
+  
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return images.count
   }
@@ -123,7 +136,33 @@ extension SearchViewController: UICollectionViewDataSource {
     
     cell.setup(images[indexPath.row])
     return cell
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    selectedCell = collectionView.cellForItem(at: indexPath) as? ResultImageCollectionViewCell
+    performSegue(withIdentifier: segueIdentifier, sender: self)
+  }
+}
+
+extension SearchViewController: UIViewControllerTransitioningDelegate {
     
-  }  
+    func animationController(forPresented presented: UIViewController,
+                             presenting: UIViewController,
+                             source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        guard let cell = selectedCell,
+            let originFrame = cell.superview?.convert(cell.frame, to: nil) else {
+            return animator
+        }
+        
+        animator.presenting = true
+        animator.originFrame = originFrame
+        return animator
+    }
+  
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        animator.presenting = false
+        return animator
+    }
 }
 
