@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SearchResultViewModel: Codable {
+struct SearchResultViewModel {
   let searchString: String
   let photos: [ResultImage]
   let page: Int

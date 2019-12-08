@@ -58,6 +58,7 @@ class SearchViewController: BaseViewController {
     vc.setResultImage(cell.resultImage)
   }
   
+  // Trigger from Presenter
   func updateView(_ viewModel: SearchResultViewModel) {
     hideActivityIndicator()
     images = viewModel.photos
@@ -109,9 +110,6 @@ class SearchViewController: BaseViewController {
 // MARK: - Extensions
 
 extension SearchViewController: UISearchBarDelegate {
-  func updateSearchResults(for searchController: UISearchController) {
-    
-  }
   
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     if let text = searchBar.text {

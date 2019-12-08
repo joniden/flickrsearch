@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ResultImage: Codable {
+struct ResultImage {
   var url: String?
   var data: Data?
   var id: String?
