@@ -10,6 +10,7 @@ import Foundation
 
 typealias DataCallback = ((Result<Data, Error>) -> Void)
 typealias PhotosCallback = ((Result<ResponsePhotosAPIModel, Error>) -> Void)
+typealias PhotoDetailCallback = ((Result<PhotoDetailAPIModel?, Error>) -> Void)
 
 enum APIError: Error {
   case invalidUrl
@@ -38,6 +39,22 @@ class APIManager {
           callback?(Result.success(photos))
         } catch let error {
           callback?(Result.failure(error))
+        }
+      case .failure(let error):
+        callback?(Result.failure(error))
+      }
+    }
+  }
+  
+  func details(_ photoId: String, callback: PhotoDetailCallback?) {
+    request(.info(photoId)) { result in
+      switch result {
+      case .success(let data):
+        do {
+          let info = try JSONDecoder().decode(ResponsePhotoInfoAPIModel.self, from: data)
+          callback?(Result.success(info.photo))
+        } catch let error {
+           callback?(Result.failure(error))
         }
       case .failure(let error):
         callback?(Result.failure(error))

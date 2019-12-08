@@ -26,7 +26,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="L4P-RI-QSo" customClass="ResultImageCollectionViewCell" customModule="FlickrSearch" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ResultImageCollectionViewCell" id="L4P-RI-QSo" customClass="ResultImageCollectionViewCell" customModule="FlickrSearch" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xUS-hN-eZd">
@@ -89,27 +89,32 @@
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i72-aE-74Y">
-                                        <rect key="frame" x="16" y="266" width="390" height="52.5"/>
+                                        <rect key="frame" x="16" y="266" width="390" height="36.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccE-p3-5dJ">
-                                                <rect key="frame" x="16" y="16" width="358" height="20.5"/>
-                                                <attributedString key="attributedText">
-                                                    <fragment content="Image Information">
-                                                        <attributes>
-                                                            <font key="NSFont" metaFont="system" size="17"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                        </attributes>
-                                                    </fragment>
-                                                </attributedString>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cf5-47-QnA">
+                                                <rect key="frame" x="8" y="8" width="374" height="20.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccE-p3-5dJ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
+                                                        <attributedString key="attributedText">
+                                                            <fragment content="Image Information">
+                                                                <attributes>
+                                                                    <font key="NSFont" metaFont="system" size="17"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="ccE-p3-5dJ" secondAttribute="bottom" constant="16" id="085-cE-72z"/>
-                                            <constraint firstAttribute="trailing" secondItem="ccE-p3-5dJ" secondAttribute="trailing" constant="16" id="0Md-Qa-HBg"/>
-                                            <constraint firstItem="ccE-p3-5dJ" firstAttribute="leading" secondItem="i72-aE-74Y" secondAttribute="leading" constant="16" id="nAA-b9-bzw"/>
-                                            <constraint firstItem="ccE-p3-5dJ" firstAttribute="top" secondItem="i72-aE-74Y" secondAttribute="top" constant="16" id="tPi-1z-yKd"/>
+                                            <constraint firstAttribute="bottom" secondItem="cf5-47-QnA" secondAttribute="bottom" constant="8" id="LzI-tg-KeY"/>
+                                            <constraint firstItem="cf5-47-QnA" firstAttribute="leading" secondItem="i72-aE-74Y" secondAttribute="leading" constant="8" id="MLu-c3-U2U"/>
+                                            <constraint firstAttribute="trailing" secondItem="cf5-47-QnA" secondAttribute="trailing" constant="8" id="bY3-Jn-QV1"/>
+                                            <constraint firstItem="cf5-47-QnA" firstAttribute="top" secondItem="i72-aE-74Y" secondAttribute="top" constant="8" id="dNa-qh-dKU"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -130,7 +135,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                 <items>
                                     <navigationItem title="Title" id="zkb-8p-j71">
-                                        <barButtonItem key="leftBarButtonItem" title="X" style="done" id="p6h-od-Aml"/>
+                                        <barButtonItem key="leftBarButtonItem" title="X" style="done" id="p6h-od-Aml">
+                                            <connections>
+                                                <action selector="didPressClose:" destination="Iyj-0F-gfw" id="kWc-aR-uML"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -152,6 +161,7 @@
                         <outlet property="imageView" destination="XFg-ky-BJR" id="qM8-DB-23o"/>
                         <outlet property="infoLabel" destination="ccE-p3-5dJ" id="GGV-k7-a1O"/>
                         <outlet property="infoWrapperView" destination="i72-aE-74Y" id="kla-UF-CC2"/>
+                        <outlet property="modalNavigationItem" destination="zkb-8p-j71" id="9WC-zJ-cdz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PHe-Of-I5T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

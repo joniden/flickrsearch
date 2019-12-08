@@ -41,6 +41,22 @@ class SearchViewController: UIViewController {
     setupPagination()
   }
   
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard
+      segue.identifier == segueIdentifier,
+      let vc = segue.destination as? ImageDetailsViewController,
+      let cell = selectedCell
+    else {
+       return
+    }
+    
+    // We are using a custom tranition
+    vc.transitioningDelegate = self
+    vc.modalPresentationStyle = .custom
+    vc.setResultImage(cell.resultImage)
+  }
+  
   // MARK: - SearchController
 
   private func setupSearchController() {
@@ -80,20 +96,6 @@ extension SearchViewController: UISearchBarDelegate {
     if let text = searchBar.text {
       presenter?.search(text)
     }
-  }
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    guard
-      segue.identifier == segueIdentifier,
-      let vc = segue.destination as? ImageDetailsViewController,
-      let cell = selectedCell
-    else {
-       return
-    }
-    
-    vc.transitioningDelegate = self
-    vc.modalPresentationStyle = .custom    
-    vc.setImage(cell.imageView?.image)
   }
 }
 

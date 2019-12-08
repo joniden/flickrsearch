@@ -12,6 +12,8 @@ class ResultImageCollectionViewCell: UICollectionViewCell {
   
   // MARK: - Vars
   
+  var resultImage: ResultImage?
+  
   static var identifier: String {
     return String(describing: self)
   }
@@ -32,7 +34,7 @@ class ResultImageCollectionViewCell: UICollectionViewCell {
   }
   
   func setup(_ resultImage: ResultImage) {
-    
+    self.resultImage = resultImage
     DispatchQueue.global(qos: .background).async {
       guard let urlString = resultImage.imageUrl,
             let url = URL(string: urlString),
@@ -43,6 +45,7 @@ class ResultImageCollectionViewCell: UICollectionViewCell {
       
       DispatchQueue.main.async {
         self.imageView?.image = UIImage(data: data)
+        self.resultImage?.imageData = data
       }
     }
   }

@@ -22,7 +22,20 @@ class ImageDetailsPresenter {
   }
   
   func getDetails(_ photoId: String) {
-    APIManager.shared.search(<#T##string: String##String#>, callback: <#T##PhotosCallback?##PhotosCallback?##(Result<ResponsePhotosAPIModel, Error>) -> Void#>)
+    apiManager.details(photoId) { result in
+      
+      DispatchQueue.main.async {
+        switch result {
+        case .success(let model):
+          if let model = model {
+            let viewModel = ImageDetailsViewModel(model)
+            self.ui?.updateInformation(viewModel)
+          }
+        case .failure(let error):
+          self.ui?.showAlert(error.localizedDescription)
+        }
+      }
+    }
   }
   
 }

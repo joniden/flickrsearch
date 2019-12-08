@@ -23,12 +23,5 @@ struct PhotosAPIModel: Codable {
    let pages: Int?
    let perPage: Int?
    let total: String?
-   let photo: [Photo]?
-   
-   struct Photo: Codable {
-     let id: String
-     let farm: Int
-     let secret: String
-     let server: String
-   }
+   let photo: [PhotoAPIModel]?
  }

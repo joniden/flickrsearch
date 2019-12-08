@@ -18,6 +18,11 @@
 		85A12424239CFF96004CA184 /* ImageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A12423239CFF96004CA184 /* ImageDetailsViewController.swift */; };
 		85A12427239D0C69004CA184 /* GrowAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A12426239D0C69004CA184 /* GrowAnimator.swift */; };
 		85A1242A239D13C8004CA184 /* ImageDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A12429239D13C8004CA184 /* ImageDetailsPresenter.swift */; };
+		85A1242C239D486E004CA184 /* PhotoAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A1242B239D486E004CA184 /* PhotoAPIModel.swift */; };
+		85A12430239D498B004CA184 /* ImageDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A1242F239D498B004CA184 /* ImageDetailsViewModel.swift */; };
+		85A12431239D4D32004CA184 /* ResponsePhotoInfoAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A1242D239D489A004CA184 /* ResponsePhotoInfoAPIModel.swift */; };
+		85A12433239D4F0F004CA184 /* PhotoDetailAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A12432239D4F0F004CA184 /* PhotoDetailAPIModel.swift */; };
+		85A1243A239D5BC7004CA184 /* NSMutableAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A12439239D5BC7004CA184 /* NSMutableAttributedString+Extensions.swift */; };
 		85C05151239C06DD0051D16F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C05150239C06DD0051D16F /* AppDelegate.swift */; };
 		85C05153239C06DD0051D16F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C05152239C06DD0051D16F /* SceneDelegate.swift */; };
 		85C05155239C06DD0051D16F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C05154239C06DD0051D16F /* SearchViewController.swift */; };
@@ -40,6 +45,11 @@
 		85A12423239CFF96004CA184 /* ImageDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailsViewController.swift; sourceTree = "<group>"; };
 		85A12426239D0C69004CA184 /* GrowAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowAnimator.swift; sourceTree = "<group>"; };
 		85A12429239D13C8004CA184 /* ImageDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailsPresenter.swift; sourceTree = "<group>"; };
+		85A1242B239D486E004CA184 /* PhotoAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAPIModel.swift; sourceTree = "<group>"; };
+		85A1242D239D489A004CA184 /* ResponsePhotoInfoAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsePhotoInfoAPIModel.swift; sourceTree = "<group>"; };
+		85A1242F239D498B004CA184 /* ImageDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailsViewModel.swift; sourceTree = "<group>"; };
+		85A12432239D4F0F004CA184 /* PhotoDetailAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailAPIModel.swift; sourceTree = "<group>"; };
+		85A12439239D5BC7004CA184 /* NSMutableAttributedString+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Extensions.swift"; sourceTree = "<group>"; };
 		85C0514D239C06DD0051D16F /* FlickrSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85C05150239C06DD0051D16F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85C05152239C06DD0051D16F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,9 +122,18 @@
 		85A12428239D0E0E004CA184 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				85A12438239D5BBB004CA184 /* Extensions */,
 				85A12426239D0C69004CA184 /* GrowAnimator.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		85A12438239D5BBB004CA184 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				85A12439239D5BC7004CA184 /* NSMutableAttributedString+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		85C05144239C06DD0051D16F = {
@@ -166,6 +185,10 @@
 				85C0516B239C09BA0051D16F /* ResultImage.swift */,
 				85A12416239C1690004CA184 /* ResponsePhotosAPIModel.swift */,
 				85A12418239C2F6D004CA184 /* SearchResultViewModel.swift */,
+				85A1242B239D486E004CA184 /* PhotoAPIModel.swift */,
+				85A12432239D4F0F004CA184 /* PhotoDetailAPIModel.swift */,
+				85A1242D239D489A004CA184 /* ResponsePhotoInfoAPIModel.swift */,
+				85A1242F239D498B004CA184 /* ImageDetailsViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -243,15 +266,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85A12431239D4D32004CA184 /* ResponsePhotoInfoAPIModel.swift in Sources */,
 				85A12411239C105C004CA184 /* APIManager.swift in Sources */,
+				85A1243A239D5BC7004CA184 /* NSMutableAttributedString+Extensions.swift in Sources */,
+				85A12433239D4F0F004CA184 /* PhotoDetailAPIModel.swift in Sources */,
 				85A1242A239D13C8004CA184 /* ImageDetailsPresenter.swift in Sources */,
 				85C05155239C06DD0051D16F /* SearchViewController.swift in Sources */,
 				85C05151239C06DD0051D16F /* AppDelegate.swift in Sources */,
 				85A12419239C2F6D004CA184 /* SearchResultViewModel.swift in Sources */,
 				85A12427239D0C69004CA184 /* GrowAnimator.swift in Sources */,
 				85C0516C239C09BA0051D16F /* ResultImage.swift in Sources */,
+				85A12430239D498B004CA184 /* ImageDetailsViewModel.swift in Sources */,
 				85A12413239C1192004CA184 /* FlickrSettings.swift in Sources */,
 				85A12424239CFF96004CA184 /* ImageDetailsViewController.swift in Sources */,
+				85A1242C239D486E004CA184 /* PhotoAPIModel.swift in Sources */,
 				85A12417239C1690004CA184 /* ResponsePhotosAPIModel.swift in Sources */,
 				85C05153239C06DD0051D16F /* SceneDelegate.swift in Sources */,
 				85A12415239C152C004CA184 /* SearchPresenter.swift in Sources */,
