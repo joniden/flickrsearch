@@ -19,12 +19,17 @@ class PaginationView: UIView {
     return String(describing: type(of: self))
   }
   
-  private var currentPage = 0
+  private var currentPage = 0 {
+    didSet {
+      backButton.isEnabled = currentPage > 1
+    }
+  }
   
   // MARK: - IBOutlet
   
   @IBOutlet weak var paginationInfo: UILabel!
   @IBOutlet weak var contentView: UIView!
+  @IBOutlet weak var backButton: UIButton!
   
   // MARK: - IBActions
   
