@@ -16,14 +16,15 @@ struct FlickrSettings {
   /// Doing this route gives a very nice routing structure
   /// This will provide a url route like this `FlickrSettings.search(String)`
   enum Route {
-    case search(String)
+    case search(String, Int)
     case image(PhotoAPIModel)
     case info(String)
     
     var url: String {
       switch self {
-      case .search(let searchString):
-        return "\(baseUrl)?method=flickr.photos.search&api_key=\(apiKey)&format=json&nojsoncallback=1&per_page=9s&text=\(searchString)"
+      case .search(let searchString, let page):
+        let encodedString = searchString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        return "\(baseUrl)?method=flickr.photos.search&api_key=\(apiKey)&format=json&nojsoncallback=1&per_page=24&page=\(page)s&text=\(encodedString ?? "")"
       case .image(let photo):
         // This was a neat little method to get a url with only photo information
         return "https://farm\(photo.farm).staticflickr.com/\(photo.server)/\(photo.id)_\(photo.secret).jpg"

@@ -12,12 +12,14 @@ class PaginationView: UIView {
   
   // MARK: - Vars
   
-  var didPressNext: (() -> ())?
-  var didPressBack: (() -> ())?
+  var didPressNext: ((Int) -> ())?
+  var didPressBack: ((Int) -> ())?
   
   var identifier: String {
     return String(describing: type(of: self))
   }
+  
+  private var currentPage = 0
   
   // MARK: - IBOutlet
   
@@ -27,11 +29,15 @@ class PaginationView: UIView {
   // MARK: - IBActions
   
   @IBAction func didPressBack(_ sender: UIButton) {
-    didPressBack?()
+    if currentPage > 0 {
+      let prevPage = currentPage - 1
+      didPressBack?(prevPage)
+    }
   }
   
   @IBAction func didPressNext(_ sender: UIButton) {
-    didPressNext?()
+    let nextPage: Int = currentPage + 1
+    didPressNext?(nextPage)
   }
   
   // MARK: - Life cycle
@@ -58,6 +64,7 @@ class PaginationView: UIView {
   }
   
   func setCurrentInfo(currentPage: Int, totalPages: Int) {
+    self.currentPage = currentPage
     paginationInfo.text = "\(currentPage)/\(totalPages)"
   }
 

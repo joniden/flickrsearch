@@ -23,21 +23,19 @@ class SearchPresenter {
   
   // MARK: - Calls
   
-  func search(_ string: String) {
+  func search(string: String, page: Int) {
     
     guard !string.isEmpty else {
       return
     }
     
-    apiManager.search(string) { result in
+    apiManager.search(string: string, page: page) { result in
       DispatchQueue.main.async {
         switch result {
-        case .success(let response):
-          if let photo = response.photos.photo {
-            self.ui?.images = photo.compactMap { ResultImage($0) }
-          } else {
-            self.ui?.showAlert("no images")
-          }
+        case .success(let response):            
+          let viewModel = SearchResultViewModel(searchString: string, model: response.photos)
+          
+          self.ui?.updateView(viewModel)
         case .failure(let error):
           self.ui?.showAlert(error.localizedDescription)
         }

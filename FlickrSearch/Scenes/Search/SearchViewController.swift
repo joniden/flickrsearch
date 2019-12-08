@@ -12,12 +12,14 @@ class SearchViewController: UIViewController {
   
   // MARK: - Vars
   
-  var images: [ResultImage] = [] {
+  private var images: [ResultImage] = [] {
     didSet {
       collectionView.reloadData()
       paginationView.isHidden = images.count == 0
     }
   }
+  
+  private var searchString: String?
   
   var selectedCell: ResultImageCollectionViewCell?
   let animator = GrowAnimator()
@@ -41,7 +43,6 @@ class SearchViewController: UIViewController {
     setupPagination()
   }
   
-  
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     guard
       segue.identifier == segueIdentifier,
@@ -51,10 +52,15 @@ class SearchViewController: UIViewController {
        return
     }
     
-    // We are using a custom tranition
+    // We are using a custom transition
     vc.transitioningDelegate = self
     vc.modalPresentationStyle = .custom
     vc.setResultImage(cell.resultImage)
+  }
+  
+  func updateView(_ viewModel: SearchResultViewModel) {
+    self.images = viewModel.photos
+    self.paginationView.setCurrentInfo(currentPage: viewModel.page, totalPages: viewModel.pages)
   }
   
   // MARK: - SearchController
@@ -76,6 +82,17 @@ class SearchViewController: UIViewController {
   
   private func setupPagination() {
     paginationView.setCurrentInfo(currentPage: 0, totalPages: 0)
+    paginationView.didPressNext = { page in
+      if let searchString = self.searchString {
+        self.presenter?.search(string: searchString, page: page)
+      }      
+    }
+    
+    paginationView.didPressBack = { page in
+      if let searchString = self.searchString {
+        self.presenter?.search(string: searchString, page: page)
+      }
+    }
   }
   
   // MARK: - Alert
@@ -94,7 +111,8 @@ extension SearchViewController: UISearchBarDelegate {
   
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     if let text = searchBar.text {
-      presenter?.search(text)
+      self.searchString = text
+      presenter?.search(string: text, page: 1)
     }
   }
 }

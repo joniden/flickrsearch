@@ -28,9 +28,9 @@ class APIManager {
   
   // MARK: - Func
   
-  func search(_ string: String, callback: PhotosCallback?) {
+  func search(string: String, page: Int, callback: PhotosCallback?) {
     
-    request(.search(string)) { result in
+    request(.search(string, page)) { result in
       
       switch result {
       case .success(let data):
@@ -74,7 +74,7 @@ class APIManager {
       
       let request = URLRequest(url: url)
       let configuration = URLSessionConfiguration.default
-      configuration.timeoutIntervalForResource = 10
+      configuration.timeoutIntervalForResource = 30
       let session = URLSession(configuration: configuration)
       
       let task = session.dataTask(with: request) { (data, response, error) in

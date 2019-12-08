@@ -30,9 +30,9 @@
             filePath = "FlickrSearch/Scenes/Search/SearchViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "setupPagination()"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "updateSearchResults(for:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -46,10 +46,10 @@
             filePath = "FlickrSearch/Scenes/Search/SearchViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "SearchViewController"
-            landmarkType = "21">
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "collectionView(_:layout:sizeForItemAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -64,7 +64,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
             endingLineNumber = "52"
-            landmarkName = "setup()"
+            landmarkName = "init(coder:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -80,7 +80,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "39"
             endingLineNumber = "39"
-            landmarkName = "search(_:callback:)"
+            landmarkName = "search(string:page:callback:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -96,7 +96,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
             endingLineNumber = "41"
-            landmarkName = "search(_:callback:)"
+            landmarkName = "search(string:page:callback:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -112,7 +112,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
             endingLineNumber = "44"
-            landmarkName = "search(_:callback:)"
+            landmarkName = "search(string:page:callback:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -128,15 +128,15 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
             endingLineNumber = "34"
-            landmarkName = "search(_:callback:)"
+            landmarkName = "search(string:page:callback:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "4FC48FB8-7CBB-4601-9F64-0FDD7DC5215E - 2c08071e1e78b0e7"
+                  uuid = "4FC48FB8-7CBB-4601-9F64-0FDD7DC5215E - 47cee5a2a24eebfc"
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; () in FlickrSearch.APIManager.search(_: Swift.String, callback: Swift.Optional&lt;(Swift.Result&lt;FlickrSearch.ResponsePhotosAPIModel, Swift.Error&gt;) -&gt; ()&gt;) -&gt; ()"
+                  symbolName = "closure #1 (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; () in FlickrSearch.APIManager.search(string: Swift.String, page: Swift.Int, callback: Swift.Optional&lt;(Swift.Result&lt;FlickrSearch.ResponsePhotosAPIModel, Swift.Error&gt;) -&gt; ()&gt;) -&gt; ()"
                   moduleName = "FlickrSearch"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jocke/Documents/xcode/FlickrSearch/FlickrSearch/Services/APIManager.swift"
@@ -147,11 +147,11 @@
                   offsetFromSymbolStart = "294">
                </Location>
                <Location
-                  uuid = "4FC48FB8-7CBB-4601-9F64-0FDD7DC5215E - 2c08071e1e78b0e7"
+                  uuid = "4FC48FB8-7CBB-4601-9F64-0FDD7DC5215E - 47cee5a2a24eebfc"
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; () in FlickrSearch.APIManager.search(_: Swift.String, callback: Swift.Optional&lt;(Swift.Result&lt;FlickrSearch.ResponsePhotosAPIModel, Swift.Error&gt;) -&gt; ()&gt;) -&gt; ()"
+                  symbolName = "closure #1 (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; () in FlickrSearch.APIManager.search(string: Swift.String, page: Swift.Int, callback: Swift.Optional&lt;(Swift.Result&lt;FlickrSearch.ResponsePhotosAPIModel, Swift.Error&gt;) -&gt; ()&gt;) -&gt; ()"
                   moduleName = "FlickrSearch"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jocke/Documents/xcode/FlickrSearch/FlickrSearch/Services/APIManager.swift"
@@ -176,7 +176,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
             endingLineNumber = "38"
-            landmarkName = "search(_:callback:)"
+            landmarkName = "search(string:page:callback:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -321,6 +321,54 @@
             startingLineNumber = "31"
             endingLineNumber = "31"
             landmarkName = "getDetails(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "43E46689-C2B6-4891-A82D-B34A295F76AA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FlickrSearch/Scenes/Search/SearchPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "search(string:page:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4DBE8149-3975-40D4-93A0-043D258F4107"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FlickrSearch/Services/APIManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "request(_:callback:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9B422590-683A-453D-9760-DEB37D5870FC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FlickrSearch/Services/APIManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "request(_:callback:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
