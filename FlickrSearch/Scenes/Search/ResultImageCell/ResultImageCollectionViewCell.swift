@@ -12,8 +12,8 @@ class ResultImageCollectionViewCell: UICollectionViewCell {
   
   // MARK: - Vars
   
-  var resultImage: ResultImage?
   let cache = NSCache<NSString, AnyObject>()
+	var url: URL?
   
   static var identifier: String {
     return String(describing: self)
@@ -37,12 +37,16 @@ class ResultImageCollectionViewCell: UICollectionViewCell {
     activityIndicatorView.startAnimating()
   }
   
-  func setup(_ resultImage: ResultImage) {
-    self.resultImage = resultImage
-    getImage()
+	func setup(resultImage: ResultImage) {
+	
+		if let urlString = resultImage.url {
+			url = URL(string: urlString)
+		}
+	
+    //getImage()
   }
   
-  private func getImage() {
+  /*private func getImage() {
     
     guard let urlString = self.resultImage?.url, let url = URL(string: urlString) else {
       activityIndicatorView.stopAnimating()
@@ -73,6 +77,6 @@ class ResultImageCollectionViewCell: UICollectionViewCell {
         }
       }
     }
-  }
+  }*/
   
 }

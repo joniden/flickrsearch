@@ -44,9 +44,9 @@ class ImageDetailsViewController: BaseViewController {
     imageView.addGestureRecognizer(gestureRecognizer)
     
     // The image comes from previous screen, so we just load id
-    if let data = resultImage?.data {
+    /*if let data = resultImage?.data {
       imageView.image = UIImage(data: data)
-    }
+    }*/
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

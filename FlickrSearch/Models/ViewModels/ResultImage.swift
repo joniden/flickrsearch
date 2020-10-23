@@ -10,12 +10,10 @@ import Foundation
 
 struct ResultImage {
   var url: String?
-  var data: Data?
   var id: String?
   
   init(_ photo: PhotoAPIModel) {
     url = FlickrSettings.Route.image(photo).url
-    data = nil
     id = photo.id
   }
 }

@@ -6,7 +6,7 @@
 //  Copyright © 2019 Joacim Nidén. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class SearchPresenter {
   
@@ -14,6 +14,8 @@ class SearchPresenter {
   
   private let apiManager = APIManager.shared
   private var ui: SearchViewController?
+	
+	private let imageProvider = ImageProvider()
   
   // MARK: - Life cycle
   
@@ -46,4 +48,8 @@ class SearchPresenter {
       }      
     }
   }
+	
+	func getImage(url: URL, completion: @escaping (UIImage) -> Void) {
+		imageProvider.loadImage(from: url, completion: completion)
+	}
 }

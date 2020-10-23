@@ -55,7 +55,7 @@ class SearchViewController: BaseViewController {
     // We are using a custom transition
     vc.transitioningDelegate = self
     vc.modalPresentationStyle = .custom
-    vc.setResultImage(cell.resultImage)
+    //vc.setResultImage(cell.resultImage)
   }
   
   // Trigger from Presenter
@@ -79,7 +79,8 @@ class SearchViewController: BaseViewController {
   
   private func setupCollectionView() {
     collectionView.delegate = self
-    collectionView.register(ResultImageCollectionViewCell.nib, forCellWithReuseIdentifier: ResultImageCollectionViewCell.identifier)
+    collectionView.register(ResultImageCollectionViewCell.nib,
+							forCellWithReuseIdentifier: ResultImageCollectionViewCell.identifier)
   }
   
   private func setupPagination() {
@@ -156,7 +157,15 @@ extension SearchViewController: UICollectionViewDataSource {
       return UICollectionViewCell()
     }
     
-    cell.setup(images[indexPath.row])
+		cell.setup(resultImage: images[indexPath.row])
+	
+		if let url = cell.url {
+			presenter?.getImage(url: url) {
+				cell.imageView?.image = $0
+				cell.activityIndicatorView.stopAnimating()
+			}
+		}
+	
     return cell
   }
   
@@ -172,19 +181,19 @@ extension SearchViewController: UIViewControllerTransitioningDelegate {
                              presenting: UIViewController,
                              source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
-        guard let cell = selectedCell,
-            let originFrame = cell.superview?.convert(cell.frame, to: nil) else {
-            return animator
-        }
-        
-        animator.presenting = true
-        animator.originFrame = originFrame
-        return animator
-    }
+		guard let cell = selectedCell,
+				let originFrame = cell.superview?.convert(cell.frame, to: nil) else {
+				return animator
+		}
+		
+		animator.presenting = true
+		animator.originFrame = originFrame
+		return animator
+	}
   
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        animator.presenting = false
-        return animator
-    }
+	func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+		animator.presenting = false
+		return animator
+	}
 }
 
