@@ -12,7 +12,7 @@ class ResultImageCollectionViewCell: UICollectionViewCell {
   
   // MARK: - Vars
 	var resultImage: ResultImage? {
-		didSet {			
+		didSet {
 			if let urlString = resultImage?.url {
 				url = URL(string: urlString)
 			}
@@ -50,6 +50,11 @@ class ResultImageCollectionViewCell: UICollectionViewCell {
     activityIndicatorView.hidesWhenStopped = true
     activityIndicatorView.startAnimating()
   }
+	
+	override func prepareForReuse() {
+		super.prepareForReuse()
+		imageView?.image = nil
+	}
   
 	func setup(resultImage: ResultImage) {
 		self.resultImage = resultImage
