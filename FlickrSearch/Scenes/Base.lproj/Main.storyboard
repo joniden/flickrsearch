@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -100,6 +101,23 @@
                                     <constraint firstAttribute="trailing" secondItem="Y4P-Hg-IWg" secondAttribute="trailing" id="vjQ-aQ-Aig"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gKF-bL-JtK">
+                                <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="1W2-uQ-HdY"/>
+                                    <constraint firstAttribute="width" constant="64" id="o5W-dd-G6A"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <imageReference key="image" image="xmark.circle" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPressClose:" destination="Iyj-0F-gfw" eventType="touchUpInside" id="Ftl-bU-ZCb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Awy-dJ-KjT"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -107,10 +125,13 @@
                             <constraint firstItem="yrc-X8-yDG" firstAttribute="leading" secondItem="Awy-dJ-KjT" secondAttribute="leading" constant="16" id="4Qk-Ap-K0M"/>
                             <constraint firstItem="Awy-dJ-KjT" firstAttribute="bottom" secondItem="yrc-X8-yDG" secondAttribute="bottom" id="ITz-2a-pSJ"/>
                             <constraint firstItem="Awy-dJ-KjT" firstAttribute="trailing" secondItem="yrc-X8-yDG" secondAttribute="trailing" constant="16" id="T3h-h4-6Hk"/>
+                            <constraint firstItem="gKF-bL-JtK" firstAttribute="top" secondItem="Awy-dJ-KjT" secondAttribute="top" id="bLt-by-urg"/>
+                            <constraint firstItem="gKF-bL-JtK" firstAttribute="leading" secondItem="Awy-dJ-KjT" secondAttribute="leading" id="y6g-oN-mvN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="g4U-qR-xqb"/>
                     <connections>
+                        <outlet property="button" destination="gKF-bL-JtK" id="dM2-1i-Pgf"/>
                         <outlet property="label" destination="Y4P-Hg-IWg" id="8NB-CB-9NV"/>
                         <outlet property="labelViewContainer" destination="yrc-X8-yDG" id="XCz-IE-WHe"/>
                     </connections>
@@ -139,6 +160,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="xmark.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

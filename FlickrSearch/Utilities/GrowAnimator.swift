@@ -12,7 +12,7 @@ open class GrowAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
     var originFrame = CGRect.zero
     var presenting = true
-    let duration = 0.2
+    let duration = 0.1
     
     open func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return duration

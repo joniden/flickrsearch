@@ -26,10 +26,11 @@ class ImageDetailsViewController: BaseViewController {
 
 	@IBOutlet weak var labelViewContainer: UIView!
 	@IBOutlet weak var label: UILabel!
+	@IBOutlet weak var button: UIButton!
 	
   // MARK: - IBActions
   
-  @IBAction func didPressClose(_ sender: UIBarButtonItem) {
+  @IBAction func didPressClose(_ sender: UIButton) {
     self.dismiss(animated: true, completion: nil)
   }
   
@@ -88,6 +89,7 @@ class ImageDetailsViewController: BaseViewController {
     hideActivityIndicator()
 		label.attributedText = viewModel.attributedText
 		view.bringSubviewToFront(label)
+		view.bringSubviewToFront(button)
   }
 	
 	func zoomRectForScale(scale: CGFloat, center: CGPoint) -> CGRect {
@@ -111,9 +113,10 @@ class ImageDetailsViewController: BaseViewController {
 		}
   }
 	
-	private func animateLabel(visible: Bool) {
+	private func animateLabels(visible: Bool) {
 		UIView.animate(withDuration: 0.3) {
 			self.labelViewContainer.alpha = visible ? 1.0 : 0.0
+			self.button.alpha = visible ? 1.0 : 0.0
 		}
 	}
 	
@@ -125,6 +128,6 @@ extension ImageDetailsViewController: UIScrollViewDelegate {
 	}
 	
 	func scrollViewDidZoom(_ scrollView: UIScrollView) {
-		animateLabel(visible: scrollView.zoomScale == 1)
+		animateLabels(visible: scrollView.zoomScale == 1)
 	}
 }
