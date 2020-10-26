@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		51C2BB722542F069007720EA /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C2BB712542F069007720EA /* ImageProvider.swift */; };
+		51C2BB792546FAED007720EA /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C2BB782546FAED007720EA /* String+Extensions.swift */; };
 		8515EBF7239D9BE000BCBD4D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8515EBF6239D9BE000BCBD4D /* README.md */; };
 		85A1240E239C0C6B004CA184 /* ResultImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85A1240D239C0C6B004CA184 /* ResultImageCollectionViewCell.xib */; };
 		85A12411239C105C004CA184 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A12410239C105C004CA184 /* APIManager.swift */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		51C2BB712542F069007720EA /* ImageProvider.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; tabWidth = 2; };
+		51C2BB782546FAED007720EA /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		8515EBF6239D9BE000BCBD4D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		85A1240D239C0C6B004CA184 /* ResultImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		85A12410239C105C004CA184 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				85A12439239D5BC7004CA184 /* NSMutableAttributedString+Extensions.swift */,
+				51C2BB782546FAED007720EA /* String+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				85A12427239D0C69004CA184 /* GrowAnimator.swift in Sources */,
 				85C0516C239C09BA0051D16F /* ResultImage.swift in Sources */,
 				51C2BB722542F069007720EA /* ImageProvider.swift in Sources */,
+				51C2BB792546FAED007720EA /* String+Extensions.swift in Sources */,
 				85A12430239D498B004CA184 /* ImageDetailsViewModel.swift in Sources */,
 				85A12413239C1192004CA184 /* FlickrSettings.swift in Sources */,
 				85A12424239CFF96004CA184 /* ImageDetailsViewController.swift in Sources */,
