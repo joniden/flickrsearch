@@ -51,6 +51,11 @@ class ImageDetailsViewController: BaseViewController {
       presenter?.getDetails(id)
     }
   }
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		view.bringSubviewToFront(button)
+	}
   
   // MARK: - Functions
 	
@@ -89,7 +94,6 @@ class ImageDetailsViewController: BaseViewController {
     hideActivityIndicator()
 		label.attributedText = viewModel.attributedText
 		view.bringSubviewToFront(label)
-		view.bringSubviewToFront(button)
   }
 	
 	func zoomRectForScale(scale: CGFloat, center: CGPoint) -> CGRect {

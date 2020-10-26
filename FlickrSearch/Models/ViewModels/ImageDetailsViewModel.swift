@@ -20,11 +20,13 @@ struct ImageDetailsViewModel {
     
     attributedString.addTitle("Description")
     attributedString.addBody(model.description?._content ?? "")
+		attributedString.addBody()
     
     // Date
     
     attributedString.addTitle("Taken at date")
     attributedString.addBody(model.dates?.taken ?? "")
+		attributedString.addBody()
       
     attributedText = attributedString
     

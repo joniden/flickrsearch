@@ -16,8 +16,16 @@ extension NSMutableAttributedString {
     self.append(string)
   }
   
-  func addBody(_ body: String) {
-    let string = NSAttributedString(string: body + "\n\n")
-    self.append(string)
+  func addBody(_ body: String = "") {
+
+		if body == "" {
+			let string = NSAttributedString(string: "\n\n")
+			self.append(string)
+		} else {
+			let htmlString = body.convertHtml()
+			self.append(htmlString)
+		}
   }
+	
+
 }
