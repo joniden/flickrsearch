@@ -32,7 +32,6 @@ class ImageDetailsViewController: BaseViewController {
   @IBAction func didPressClose(_ sender: UIBarButtonItem) {
     self.dismiss(animated: true, completion: nil)
   }
-	
   
   // MARK: - Life cycle
   
@@ -112,10 +111,20 @@ class ImageDetailsViewController: BaseViewController {
 		}
   }
 	
+	private func animateLabel(visible: Bool) {
+		UIView.animate(withDuration: 0.3) {
+			self.labelViewContainer.alpha = visible ? 1.0 : 0.0
+		}
+	}
+	
 }
 
 extension ImageDetailsViewController: UIScrollViewDelegate {
 	func viewForZooming(in scrollView: UIScrollView) -> UIView? {
 		return imageView
+	}
+	
+	func scrollViewDidZoom(_ scrollView: UIScrollView) {
+		animateLabel(visible: scrollView.zoomScale == 1)
 	}
 }
