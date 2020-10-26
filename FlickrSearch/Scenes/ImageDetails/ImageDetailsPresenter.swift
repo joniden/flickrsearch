@@ -1,4 +1,4 @@
-//
+ //
 //  ImageDetailsPresenter.swift
 //  FlickrSearch
 //

@@ -11,9 +11,23 @@ import UIKit
 class ResultImageCollectionViewCell: UICollectionViewCell {
   
   // MARK: - Vars
-  
-  let cache = NSCache<NSString, AnyObject>()
+	var resultImage: ResultImage? {
+		didSet {			
+			if let urlString = resultImage?.url {
+				url = URL(string: urlString)
+			}
+		}
+	}
 	var url: URL?
+	var image: UIImage? {
+		set {
+			imageView?.image = newValue
+			resultImage?.image = newValue
+		}
+		get {
+			return imageView?.image
+		}
+	}
   
   static var identifier: String {
     return String(describing: self)
@@ -38,45 +52,7 @@ class ResultImageCollectionViewCell: UICollectionViewCell {
   }
   
 	func setup(resultImage: ResultImage) {
-	
-		if let urlString = resultImage.url {
-			url = URL(string: urlString)
-		}
-	
-    //getImage()
+		self.resultImage = resultImage
   }
-  
-  /*private func getImage() {
-    
-    guard let urlString = self.resultImage?.url, let url = URL(string: urlString) else {
-      activityIndicatorView.stopAnimating()
-      return // No url
-    }
-    
-    // If cache exists, use the cache
-    if let cachedImage = cache.object(forKey: url.absoluteString as NSString) as? UIImage {
-      self.imageView?.image = cachedImage
-      activityIndicatorView.stopAnimating()
-    } else {
-      DispatchQueue.global(qos: .background).async {
-        
-        guard let data = try? Data(contentsOf: url), let image = UIImage(data: data) else {          
-          DispatchQueue.main.async {
-            self.activityIndicatorView.stopAnimating()
-          }
-          return
-        }
-       
-        // Save cache
-        self.cache.setObject(image, forKey: url.absoluteString as NSString)
-      
-        DispatchQueue.main.async {
-          self.imageView?.image = image
-          self.resultImage?.data = data
-          self.activityIndicatorView.stopAnimating()
-        }
-      }
-    }
-  }*/
   
 }

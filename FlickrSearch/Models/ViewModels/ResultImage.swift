@@ -6,11 +6,12 @@
 //  Copyright © 2019 Joacim Nidén. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct ResultImage {
   var url: String?
   var id: String?
+	var image: UIImage?
   
   init(_ photo: PhotoAPIModel) {
     url = FlickrSettings.Route.image(photo).url

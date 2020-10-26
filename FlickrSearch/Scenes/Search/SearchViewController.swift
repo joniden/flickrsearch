@@ -55,7 +55,7 @@ class SearchViewController: BaseViewController {
     // We are using a custom transition
     vc.transitioningDelegate = self
     vc.modalPresentationStyle = .custom
-    //vc.setResultImage(cell.resultImage)
+    vc.setResultImage(cell.resultImage)
   }
   
   // Trigger from Presenter
@@ -161,7 +161,7 @@ extension SearchViewController: UICollectionViewDataSource {
 	
 		if let url = cell.url {
 			presenter?.getImage(url: url) {
-				cell.imageView?.image = $0
+				cell.image = $0
 				cell.activityIndicatorView.stopAnimating()
 			}
 		}

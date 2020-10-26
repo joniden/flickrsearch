@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		51C2BB722542F069007720EA /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C2BB712542F069007720EA /* ImageProvider.swift */; };
-		8515EBF5239D96A900BCBD4D /* ImageZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8515EBF4239D96A900BCBD4D /* ImageZoomViewController.swift */; };
 		8515EBF7239D9BE000BCBD4D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8515EBF6239D9BE000BCBD4D /* README.md */; };
 		85A1240E239C0C6B004CA184 /* ResultImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85A1240D239C0C6B004CA184 /* ResultImageCollectionViewCell.xib */; };
 		85A12411239C105C004CA184 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A12410239C105C004CA184 /* APIManager.swift */; };
@@ -39,7 +38,6 @@
 
 /* Begin PBXFileReference section */
 		51C2BB712542F069007720EA /* ImageProvider.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; tabWidth = 2; };
-		8515EBF4239D96A900BCBD4D /* ImageZoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageZoomViewController.swift; sourceTree = "<group>"; };
 		8515EBF6239D9BE000BCBD4D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		85A1240D239C0C6B004CA184 /* ResultImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		85A12410239C105C004CA184 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
@@ -67,7 +65,7 @@
 		85C0515C239C06E00051D16F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		85C0515E239C06E00051D16F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85C05167239C08C00051D16F /* ResultImageCollectionViewCell.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ResultImageCollectionViewCell.swift; sourceTree = "<group>"; tabWidth = 2; };
-		85C0516B239C09BA0051D16F /* ResultImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultImage.swift; sourceTree = "<group>"; };
+		85C0516B239C09BA0051D16F /* ResultImage.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ResultImage.swift; sourceTree = "<group>"; tabWidth = 2; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,7 +125,6 @@
 				85A12425239D035C004CA184 /* ImageDetails */,
 				85C05166239C08750051D16F /* Search */,
 				85A1243B239D65E3004CA184 /* BaseViewController.swift */,
-				8515EBF4239D96A900BCBD4D /* ImageZoomViewController.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -312,7 +309,6 @@
 				85C05155239C06DD0051D16F /* SearchViewController.swift in Sources */,
 				85C05151239C06DD0051D16F /* AppDelegate.swift in Sources */,
 				85A12419239C2F6D004CA184 /* SearchResultViewModel.swift in Sources */,
-				8515EBF5239D96A900BCBD4D /* ImageZoomViewController.swift in Sources */,
 				85A12427239D0C69004CA184 /* GrowAnimator.swift in Sources */,
 				85C0516C239C09BA0051D16F /* ResultImage.swift in Sources */,
 				51C2BB722542F069007720EA /* ImageProvider.swift in Sources */,
